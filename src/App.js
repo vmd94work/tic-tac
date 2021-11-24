@@ -1,21 +1,80 @@
-import React from "react";
-import "./App.css";
-import Square from "./component/Square/Square";
-/* import Tac from './component/Tac/Tac.js'
-import Tic from './component/Tic/Tic.js' */
+import React, { useState } from 'react'
+import './App.css'
+import './Square.css'
+import Tac from './component/Tac/Tac'
+import Tic from './component/Tic/Tic'
 
 function App() {
+  const [turn, setTurn] = useState('X')
+  const [cells, setCells] = useState(Array(9).fill(''))
+  const [winner, setWinner] = useState()
+  const checkWinnder = (squares) => {
+    let combos = {
+      across: [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+      ],
+      down: [
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+      ],
+      diagnol: [
+        [0, 4, 8],
+        [2, 4, 6],
+      ],
+    }
+    for (let combo in combos) {
+      // eslint-disable-next-line no-loop-func
+      combos[combo].forEach((pattern) => {
+        if (
+          squares[pattern[0]] === '' ||
+          squares[pattern[1]] === '' ||
+          squares[pattern[2]] === ''
+        ) {
+          alert('draw')
+        } else if (
+          squares[pattern[0]] === squares[pattern[1]] &&
+          squares[pattern[1]] === squares[pattern[2]]
+        ) {
+          setWinner(squares[pattern[0]])
+        }
+      })
+    }
+  }
 
-/* const handleClick = () =>{ 
-  alert ('click')
-} */
+  const handleClick = (num) => {
+    if (cells[num] !== '') {
+      alert('already clicked')
+      return
+    }
+    let squares = [...cells]
+    if (turn === 'X') {
+      squares[num] = <Tac />
+      setTurn('O')
+    } else {
+      squares[num] = <Tic />
+      setTurn('X')
+    }
+    checkWinnder(squares)
+    setCells(squares)
+  }
+
+  const Square = ({ num }) => {
+    return (
+      <div className="square" onClick={() => handleClick(num)}>
+        {cells[num]}
+      </div>
+    )
+  }
 
   return (
     <div className="wrapper">
       <div className="game">
         <div className="board">
           <div className="board__grid">
-            <div className = 'grid__block'>
+            <div className="grid__block">
               <div className="vertical">
                 <div className="vl"></div>
                 <div className="vl"></div>
@@ -41,6 +100,8 @@ function App() {
           </div>
         </div>
         <div className="players__block">
+          <h2 className="players__turn"> Turn: {turn} </h2>
+          <br />
           <h1 className="players__title">Score</h1>
           <div className="players">
             <div className="player">
@@ -55,7 +116,6 @@ function App() {
         </div>
       </div>
     </div>
-  );
+  )
 }
-
-export default App;
+export default App

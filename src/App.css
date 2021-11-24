@@ -78,6 +78,9 @@ li {
 .players__block {
   margin: 20px 50px;
 }
+.players__turn{
+  color: #fff;
+}
 .players {
   width: 200px;
   justify-content: space-between;
