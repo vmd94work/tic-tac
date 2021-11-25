@@ -7,8 +7,8 @@ import Tic from './component/Tic/Tic'
 function App() {
   const [turn, setTurn] = useState('X')
   const [cells, setCells] = useState(Array(9).fill(''))
-  const [winner, setWinner] = useState()
-  const checkWinnder = (squares) => {
+  const [winner, setWinner] = useState('')
+  const checkWinner = (squares) => {
     let combos = {
       across: [
         [0, 1, 2],
@@ -26,14 +26,12 @@ function App() {
       ],
     }
     for (let combo in combos) {
-      // eslint-disable-next-line no-loop-func
       combos[combo].forEach((pattern) => {
         if (
           squares[pattern[0]] === '' ||
           squares[pattern[1]] === '' ||
           squares[pattern[2]] === ''
         ) {
-          alert('draw')
         } else if (
           squares[pattern[0]] === squares[pattern[1]] &&
           squares[pattern[1]] === squares[pattern[2]]
@@ -49,16 +47,24 @@ function App() {
       alert('already clicked')
       return
     }
+
     let squares = [...cells]
+
     if (turn === 'X') {
-      squares[num] = <Tac />
+      squares[num] = <Tac key="1" />
       setTurn('O')
     } else {
-      squares[num] = <Tic />
+      squares[num] = <Tic key="2" />
       setTurn('X')
     }
-    checkWinnder(squares)
+    console.log(squares)
+
     setCells(squares)
+    checkWinner(squares)
+  }
+  const handleRestart = () => {
+    setWinner(null)
+    setCells(Array(9).fill(''))
   }
 
   const Square = ({ num }) => {
@@ -102,7 +108,12 @@ function App() {
         <div className="players__block">
           <h2 className="players__turn"> Turn: {turn} </h2>
           <br />
-          <h1 className="players__title">Score</h1>
+          {winner && (
+            <>
+              <p>{winner} is the winner!</p>
+              <button onClick={() => handleRestart()}>Play Again</button>
+            </>
+          )}
           <div className="players">
             <div className="player">
               <h2 className="player__title">Player 1:</h2>
