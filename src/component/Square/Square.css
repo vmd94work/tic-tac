@@ -1,0 +1,19 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  align-items: center;
+  justify-content: center;
+  grid-gap: 15px;
+  border-radius: 10px;
+}
+.square {
+  background-color: var(--primery);
+  height: 200px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  font-size: 4rem;
+}

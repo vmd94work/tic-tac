@@ -1,6 +1,12 @@
 .tac {
-    font-size: 200px; 
-    color: #c4c4c4;
-    line-height: 100px;
-    text-align: center;
+  background-color: var(--primery);
+  height: 200px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 200px;
+  color: #c4c4c4;
+  line-height: 100px;
+  text-align: center;
 }

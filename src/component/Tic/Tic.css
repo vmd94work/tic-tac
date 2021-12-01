@@ -1,6 +1,13 @@
-.tic{
-    width: 150px;
-    height: 150px;
-    border: 10px solid #c4c4c4;
-    border-radius: 75px;
+.tic {
+  background-color: var(--primery);
+  height: 200px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 170px;
+  font-weight: bold;
+  color: #c4c4c4;
+  line-height: 100px;
+  text-align: center;
 }

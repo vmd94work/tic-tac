@@ -1,8 +1,12 @@
-import React from 'react'
-import './Tic.css'
+import React from "react";
+import "./Tic.css";
 
 const Tic = () => {
-  return <div className="tic"></div>
-}
+  return (
+    <div className="tic">
+      <span>&#9711;</span>
+    </div>
+  );
+};
 
-export default Tic
+export default Tic;
