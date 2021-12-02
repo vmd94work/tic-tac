@@ -12,7 +12,11 @@ const Square = ({ clickedArray, handleClick }) => {
             </div>
           );
         } else {
-          return <div className="square__active">{item}</div>;
+          return (
+            <div key={idx} className="square__active">
+              {item}
+            </div>
+          );
         }
       })}
     </div>

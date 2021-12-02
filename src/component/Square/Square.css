@@ -17,3 +17,6 @@
   color: white;
   font-size: 4rem;
 }
+.square__active {
+  cursor: no-drop;
+}
