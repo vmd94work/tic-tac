@@ -1,7 +1,7 @@
 import React from "react";
 import "./Table.css";
 
-const Table = ({ winCount }) => {
+const Table = ({ winCount, clearHistory }) => {
   return (
     <div className="table">
       <span className="table__title">Score</span>
@@ -13,6 +13,9 @@ const Table = ({ winCount }) => {
         <span className="player__name">Player O:</span>
         <span className="player__score">{winCount.O}</span>
       </div>
+      <button className="fz-small btn" onClick={clearHistory}>
+        Clear Points
+      </button>
     </div>
   );
 };

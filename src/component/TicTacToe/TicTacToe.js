@@ -62,6 +62,18 @@ const Tictactoe = () => {
   }
   gameOver();
 
+  function restartGame() {
+    setGrid(Array(9).fill(EMPTY));
+    setGameFinished(false);
+    setPlayer(false);
+    setDraw(false);
+  }
+
+  function clearHistory() {
+    setwinCount({ X: 0, O: 0 });
+    restartGame();
+  }
+
   function handleClick(id) {
     setGrid(
       grid.map((item, idx) => {
@@ -82,8 +94,15 @@ const Tictactoe = () => {
   return (
     <div className="tic-tac-toe">
       <Square clickedArray={grid} handleClick={handleClick} />
-      <Table winCount={winCount} />
-      {gameFinished && <Winpopup />}
+      <Table winCount={winCount} clearHistory={clearHistory} />
+      {gameFinished && (
+        <Winpopup
+          restartGame={restartGame}
+          draw={draw}
+          player={player}
+          clearHistory={clearHistory}
+        />
+      )}
     </div>
   );
 };

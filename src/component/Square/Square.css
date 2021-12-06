@@ -5,6 +5,7 @@
   justify-content: center;
   grid-gap: 15px;
   border-radius: 10px;
+  position: relative;
 }
 .square {
   background-color: var(--primery);
@@ -19,4 +20,34 @@
 }
 .square__active {
   cursor: no-drop;
+}
+.grid__block {
+  position: relative;
+}
+.vertical {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: -35px;
+  left: 200px;
+}
+.vl:nth-last-child(n + 2) {
+  border-left: 15px solid #a855c1;
+  margin-right: 200px;
+  height: 700px;
+  border-radius: 10px;
+}
+.horizontal {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  transform: rotate(90deg);
+  top: 65px;
+  left: 100px;
+}
+.hz:nth-last-child(n + 2) {
+  border-left: 15px solid #a855c1;
+  height: 700px;
+  margin-right: 200px;
+  border-radius: 10px;
 }
