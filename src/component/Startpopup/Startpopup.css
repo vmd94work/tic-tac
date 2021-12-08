@@ -1,0 +1,61 @@
+.mb {
+  margin-bottom: 1rem;
+}
+.popup__background {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-out;
+}
+.start__popup {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 300px;
+  background-color: var(--secondary);
+  transition: 0.3s ease-out;
+}
+.popup__title {
+  color: #fff;
+}
+.players__names {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.input__popup {
+  border: 3px solid var(--primery);
+  padding: 0.5rem;
+  border-radius: 5px;
+  background: none;
+  color: #fff;
+  outline: none;
+}
+.input__popup::placeholder {
+  color: #fff;
+  opacity: 0.3;
+}
+.submit {
+  border: 3px solid var(--primery);
+  outline: none;
+  padding: 0.5rem;
+  width: 100px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--secondary);
+  transition: all 0.3s;
+  color: #fff;
+}
+.submit:hover {
+  background-color: var(--primery);
+}
