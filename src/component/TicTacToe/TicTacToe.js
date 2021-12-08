@@ -5,6 +5,7 @@ import Tac from "../Tac/Tac";
 import "./TicTacToe.css";
 import Table from "../Table/Table";
 import Winpopup from "../WinPopUp/Winpopup";
+import Startpopup from "../Startpopup/Startpopup";
 
 const EMPTY = "";
 const X_PLAYER = <Tac />;
@@ -21,11 +22,18 @@ const winCombination = [
 ];
 
 const Tictactoe = () => {
+  const [startGame, setstartGame] = useState(false);
+  const [playerOne, setPlayerOne] = useState("X player");
+  const [playerSec, setPlayerSec] = useState("O player");
   const [grid, setGrid] = useState(Array(9).fill(EMPTY));
   const [player, setPlayer] = useState(false);
   const [gameFinished, setGameFinished] = useState(false);
   const [draw, setDraw] = useState(false);
   const [winCount, setwinCount] = useState({ X: 0, O: 0 });
+
+  function gameStart() {
+    setstartGame(true);
+  }
 
   function gameOver() {
     if (!gameFinished) {
@@ -72,6 +80,7 @@ const Tictactoe = () => {
   function clearHistory() {
     setwinCount({ X: 0, O: 0 });
     restartGame();
+    setstartGame(false);
   }
 
   function handleClick(id) {
@@ -94,7 +103,21 @@ const Tictactoe = () => {
   return (
     <div className="tic-tac-toe">
       <Square clickedArray={grid} handleClick={handleClick} />
-      <Table winCount={winCount} clearHistory={clearHistory} />
+      <Table
+        winCount={winCount}
+        clearHistory={clearHistory}
+        playerOne={playerOne}
+        playerSec={playerSec}
+      />
+      {!startGame && (
+        <Startpopup
+          gameStart={gameStart}
+          setPlayerOne={setPlayerOne}
+          setPlayerSec={setPlayerSec}
+          playerOne={playerOne}
+          playerSec={playerSec}
+        />
+      )}
       {gameFinished && (
         <Winpopup
           restartGame={restartGame}

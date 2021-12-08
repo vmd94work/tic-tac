@@ -13,7 +13,7 @@ const Winpopup = ({ restartGame, draw, player, clearHistory }) => {
           Restart Game
         </button>
         <button className="btn" onClick={clearHistory}>
-          Clear Points
+          Reset
         </button>
       </div>
     </div>

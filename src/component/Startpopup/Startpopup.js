@@ -11,7 +11,7 @@ const Startpopup = ({
   return (
     <div className="popup__background">
       <div className="start__popup">
-        <h className="popup__title mb">Hello in TicTacToe</h>
+        <h1 className="popup__title mb">Hello in TicTacToe</h1>
         <form className="players__names">
           <input
             type="text"
